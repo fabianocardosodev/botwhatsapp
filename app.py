@@ -10,7 +10,8 @@ import openpyxl
 from urllib.parse import quote
 import webbrowser
 from time import sleep
-import pyautogui
+import pyautogui 
+
 # Ler planilha e guardar informações, nome, telefone e data vencimento
 
 webbrowser.open('https//web.whatsapp.com/')
@@ -25,8 +26,11 @@ for linha in pagina_listacontato.iter_rows(min_row=2):
     telefone = linha[1].value
     vencimento = linha[2].value
     
-    mensagem = f'Olá {nome} parabéns você é o meu primeiro contato nessa automação, eu sei que o seu aniversário é {vencimento.strftime("%d/%m/%Y")}, vamos comemorar!'
+    mensagem = f'Olá {nome} sabemos que o seu aniversário é dia {vencimento.strftime("%d/%m/%Y")}, parabéns!'
     
+    link_mensagem_whatsapp = f'https://web.whatsapp.com/send?phone={telefone}&text={quote(mensagem)}'
+    webbrowser.open(link_mensagem_whatsapp)
+    sleep(10)
    
     try:
         link_mensagem_whatsapp = f'https://web.whatsapp.com/send?phone={telefone}&text={quote(mensagem)}'
@@ -44,8 +48,6 @@ for linha in pagina_listacontato.iter_rows(min_row=2):
             arquivo.write(f'{nome},{telefone}')
     
     
-    
-    # https://web.whatsapp.com/send?phone=555555555&text="sdsdddeeerrr"
     
     
     
