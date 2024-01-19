@@ -28,10 +28,7 @@ for linha in pagina_listacontato.iter_rows(min_row=2):
     
     mensagem = f'Olá {nome} sabemos que o seu aniversário é dia {vencimento.strftime("%d/%m/%Y")}, parabéns!'
     
-    link_mensagem_whatsapp = f'https://web.whatsapp.com/send?phone={telefone}&text={quote(mensagem)}'
-    webbrowser.open(link_mensagem_whatsapp)
-    sleep(10)
-   
+      
     try:
         link_mensagem_whatsapp = f'https://web.whatsapp.com/send?phone={telefone}&text={quote(mensagem)}'
         webbrowser.open(link_mensagem_whatsapp)
@@ -40,10 +37,10 @@ for linha in pagina_listacontato.iter_rows(min_row=2):
         sleep(5)
         pyautogui.click(seta[0],seta[1])
         sleep(5)
-        pyautogui.hotkey('ctrl , w')
+        pyautogui.hotkey('ctrl','w')
         sleep(5)
     except:
-        print('Não foi possivel enviar mensagem para {nome}')
+        print(f'Não foi possivel enviar mensagem para {nome}')
         with open('erros.csv', 'a', newline='', encoding='utf-8') as arquivo:
             arquivo.write(f'{nome},{telefone}')
     
